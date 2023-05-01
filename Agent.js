@@ -6,17 +6,21 @@ class Agent {
         this.pos = createVector(300, 400);
         this.vel = createVector(0, 0);
         this.acc = createVector(0, 0);
-        this.jumpForce = createVector(0, -100);
-        this.maxVel = 3;
-        
+        this.jumpForce = createVector(0, -10);
+        this.maxVel = 10;
         
         this.nextObstacle = this.closestObstacle(obstacles);
         this.alive = true;
         this.score = 0;
+        this.color = [random(100, 255), random(100, 255), random(100, 255)];
     }
 
     draw() {
+      push();
+      noStroke();
+      fill(this.color);
       circle(this.pos.x, this.pos.y, this.rad*2);
+      pop();
       //line(this.pos.x, this.pos.y, this.nextObstacle.pos.x, this.nextObstacle.pos.y);
     }
 
@@ -61,7 +65,7 @@ class Agent {
     }
 
     jump() {
-      this.vel = this.jumpForce.copy();
+      this.vel.add(this.jumpForce.copy());
     }
 
     applyGravity() {

@@ -1,7 +1,7 @@
 class Obstacle {
     constructor(x, y) {
         this.pos = createVector(x, y);
-        this.width = 20;
+        this.width = 50;
         this.height = 200;
         this.speed = obstacleSpeed;
 
@@ -13,8 +13,12 @@ class Obstacle {
     }
 
     draw() {
+        push();
+        noStroke();
+        fill(255);
         rect(this.A.x, 0, this.width, this.A.y);
         rect(this.C.x, this.C.y, this.width, windowHeight - this.C.y);
+        pop();
     }
 
     update() {

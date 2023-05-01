@@ -6,9 +6,9 @@ let totalAlive;
 let totalGenerations = 1;
 let highScore = 0;
 
-const totalAgents = 200;
+const totalAgents = 100;
 const totalBreeders = 5;
-const mutationChance = 0.01;
+const mutationChance = 0.05;
 const obstacleCount = 5;
 const obstacleDistance = 400;
 const obstacleSpeed = 5;
@@ -61,13 +61,13 @@ function drawHUD(x, y) {
   for(let agent of agents) {
     if(agent.alive) {
       agent.brain.draw(x + 100, y + 200);
-      text('Score: ' + agent.score, x + 50, y + 70);
+      text('Score: ' + agent.score, x + 50, y + 90);
       break;
     }
   }
 
   text('Generation: ' + totalGenerations, x + 50, y + 50);
-  text('Alive: ' + totalAlive, x + 50, y + 90);
+  text('Alive: ' + totalAlive, x + 50, y + 70);
   text('High Score: ' + highScore, x + 50, y + 110);
 }
 
