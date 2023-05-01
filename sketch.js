@@ -3,7 +3,7 @@ let obstacles = [];
 
 let brain;
 let totalAlive;
-let totalGenerations = 0;
+let totalGenerations = 1;
 let highScore = 0;
 
 const totalAgents = 200;
