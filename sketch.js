@@ -17,19 +17,8 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   angleMode(DEGREES);
 
-  for(let i = 0; i < obstacleCount; i++) {
-    let ob = new Obstacle(800 + i*obstacleDistance, random(windowHeight/4, 3*windowHeight/4));
-    obstacles.push(ob);
-  }
-
-  for(let i = 0; i < totalAgents; i++) {
-    let agent = new Agent(new Brain(3, 12, 1));
-    agents.push(agent);
-  }
-
-
-  // agent1 = new Agent(400, 400, 24, brain);
-  // agents.push(agent1); 
+  obstacles = createObstacles();
+  agents = createAgents();
 }
 
 
@@ -51,28 +40,12 @@ function draw() {
     }
   }
 
-  for(let i = 0; i < agents.length; i++) {
-    if(agents[i].alive) {
-      rect(16 * windowWidth/20,0, 400, 400);
-      agents[i].brain.draw(17 * windowWidth/20, windowHeight/20);
-      break;
-    }
-  }
-
-
-  textSize(30);
-  text('Generation: ' + totalGenerations, 20, 30);
-  text('Alive: ' + totalAlive, 20, 60);
-  text('High Score: ' + highScore, 20, 90);
+  drawHUD(windowWidth - 550, 0);
   
   if(totalAlive == 0) {
     totalGenerations += 1;
+    obstacles = createObstacles();
 
-    for(let i = 0; i < obstacleCount; i++) {
-      obstacles[i].pos.x = 800 + i * obstacleDistance;
-    }
-
-    
     for(let i = 0; i < agents.length; i++) {
       if(agents[i].score > highScore) {
         highScore = agents[i].score;
@@ -82,19 +55,38 @@ function draw() {
   }
 }
 
+function drawHUD(x, y) {
+  textSize(20);
 
-
-function keyPressed() {
-  if(keyCode == 32) {
-      for(agent of agents) {
-      agent.alive = true;
-      agent.pos.y = 400;
-    }
-    
-    for(let i = 0; i < 5; i++) {
-      obstacles[i].pos.x = 800 + i * 400;
+  for(let agent of agents) {
+    if(agent.alive) {
+      agent.brain.draw(x + 100, y + 200);
+      text('Score: ' + agent.score, x + 50, y + 70);
+      break;
     }
   }
+
+  text('Generation: ' + totalGenerations, x + 50, y + 50);
+  text('Alive: ' + totalAlive, x + 50, y + 90);
+  text('High Score: ' + highScore, x + 50, y + 110);
+}
+
+function createObstacles() {
+  let newObstacles = [];
+  for(let i = 0; i < obstacleCount; i++) {
+    let ob = new Obstacle(800 + i*obstacleDistance, random(windowHeight/4, 3*windowHeight/4));
+    newObstacles.push(ob);
+  }
+  return newObstacles;
+}
+
+function createAgents() {
+  let newAgents = [];
+  for(let i = 0; i < totalAgents; i++) {
+    let agent = new Agent(new Brain(3, 12, 1));
+    newAgents.push(agent);
+  }
+  return newAgents;
 }
 
 function newGeneration() {
@@ -116,7 +108,6 @@ function newGeneration() {
     agents.splice(agents.indexOf(bestAgent), 1);
   }
 
-  
   for(let i = 0; i < totalAgents; i++) {
     let parentA = bestParents[floor(random(0, totalBreeders))];
     let parentB = bestParents[floor(random(0, totalBreeders))];
