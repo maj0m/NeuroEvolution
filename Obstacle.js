@@ -2,7 +2,7 @@ class Obstacle {
     constructor(x, y) {
         this.pos = createVector(x, y);
         this.width = 50;
-        this.height = 200;
+        this.height = 250;
         this.speed = obstacleSpeed;
 
         this.A = createVector(this.pos.x - this.width / 2, this.pos.y - this.height / 2);

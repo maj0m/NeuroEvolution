@@ -6,9 +6,9 @@ let totalAlive;
 let totalGenerations = 1;
 let highScore = 0;
 
-const totalAgents = 100;
-const totalBreeders = 5;
-const mutationChance = 0.05;
+const totalAgents = 200;
+const totalBreeders = 10;
+const mutationChance = 0.02;
 const obstacleCount = 5;
 const obstacleDistance = 400;
 const obstacleSpeed = 5;
