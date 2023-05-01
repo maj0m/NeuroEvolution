@@ -7,11 +7,12 @@ let totalGenerations = 1;
 let highScore = 0;
 
 const totalAgents = 200;
-const totalBreeders = 10;
+const totalBreeders = 20;
 const mutationChance = 0.02;
 const obstacleCount = 5;
 const obstacleDistance = 400;
 const obstacleSpeed = 5;
+const gravity = 0.4;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);

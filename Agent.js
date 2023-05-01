@@ -6,8 +6,9 @@ class Agent {
         this.pos = createVector(300, 400);
         this.vel = createVector(0, 0);
         this.acc = createVector(0, 0);
-        this.jumpForce = createVector(0, -10);
+        this.jumpForce = 10;
         this.maxVel = 10;
+        this.maxAcc = 10;
         
         this.nextObstacle = this.closestObstacle(obstacles);
         this.alive = true;
@@ -27,15 +28,18 @@ class Agent {
     update() {
       this.score += 1;
       this.nextObstacle = this.closestObstacle(obstacles);
-      
-      this.applyGravity(this.gravity);
-      this.collisionCheck(obstacles);
-      this.edgeOfScreen();
 
       let guess = this.brain.guess(this.nextObstacle.pos.x / windowWidth, this.nextObstacle.pos.y / windowHeight, this.pos.y / windowHeight);
       if(guess == 1) {
-        this.jump();
+        this.applyForce(-this.jumpForce);
       }
+
+      this.applyForce(gravity);
+      this.updateForces();
+      this.collisionCheck(obstacles);
+      this.edgeOfScreen();
+
+      
     }
 
     collisionCheck(obs) {
@@ -64,13 +68,12 @@ class Agent {
       return closest;
     }
 
-    jump() {
-      this.vel.add(this.jumpForce.copy());
+    applyForce(force) {
+      this.acc.add(0, force);
     }
 
-    applyGravity() {
-        let gravity = createVector(0, 0.5);
-        this.acc.add(gravity);
+    updateForces() {
+        this.acc.limit(this.maxAcc);
         this.vel.add(this.acc);
         this.vel.limit(this.maxVel);
         this.pos.add(this.vel);
