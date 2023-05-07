@@ -127,11 +127,10 @@ class Brain {
         }
     }
     
-
-    guess(x, y, z) {
-        this.Layer1[0].value = x;
-        this.Layer1[1].value = y;
-        this.Layer1[2].value = z;
+    guess(inputs) {
+        for(let i = 0; i < inputs.length; i++) {
+            this.Layer1[i].value = inputs[i];
+        }
 
         for(let i = 0; i < this.Layer2.length; i++) {
             this.Layer2[i].calculateOutput();
@@ -141,6 +140,7 @@ class Brain {
             this.Layer3[i].calculateOutput();
         }
 
+        // Assumes that there is only 1 output Neuron
         return this.activation(this.Layer3[0].value);
     }
 
@@ -170,7 +170,7 @@ class Brain {
 
             //Mutate bias
             if(random(0, 1) < chance*2) {
-                this.Layer2[i].bias = random(-1, 1);
+                this.Layer3[i].bias = random(-1, 1);
             }
         }
     }

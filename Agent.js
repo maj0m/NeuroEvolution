@@ -29,7 +29,7 @@ class Agent {
       this.score += 1;
       this.nextObstacle = this.closestObstacle(obstacles);
 
-      let guess = this.brain.guess(this.nextObstacle.pos.x / windowWidth, this.nextObstacle.pos.y / windowHeight, this.pos.y / windowHeight);
+      let guess = this.brain.guess([this.nextObstacle.pos.x / windowWidth, this.nextObstacle.pos.y / windowHeight, this.pos.y / windowHeight]);
       if(guess == 1) {
         this.applyForce(-this.jumpForce);
       }
