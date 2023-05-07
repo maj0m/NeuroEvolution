@@ -141,7 +141,7 @@ class Brain {
         }
 
         // Assumes that there is only 1 output Neuron
-        return this.activation(this.Layer3[0].value);
+        return this.Layer3[0].value;
     }
 
     mutate(chance) {
@@ -199,12 +199,6 @@ class Brain {
         return childBrain;
     }
 
-    activation(value) {
-        if(value < 0) {
-            return 0;
-        } else {
-            return 1;
-        }
-    }
+
 
 }

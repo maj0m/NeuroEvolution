@@ -23,8 +23,15 @@ class Neuron {
         }
 
         out += this.bias;
-        this.value = out;
+        this.value = this.activation(out);
     }
 
+    sigmoid(x) {
+        return 1 / (1 + Math.exp(-x));
+    }
 
+     // Maps the [0,1] Sigmoid function to [-1, 1]
+     activation(x) {
+        return 2 * this.sigmoid(x) - 1;
+    }
 }

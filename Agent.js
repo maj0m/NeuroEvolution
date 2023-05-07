@@ -30,7 +30,7 @@ class Agent {
       this.nextObstacle = this.closestObstacle(obstacles);
 
       let guess = this.brain.guess([this.nextObstacle.pos.x / windowWidth, this.nextObstacle.pos.y / windowHeight, this.pos.y / windowHeight]);
-      if(guess == 1) {
+      if(guess > 0) {
         this.applyForce(-this.jumpForce);
       }
 
