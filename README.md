@@ -18,16 +18,21 @@ Inputs for the neural network:
   2) Next obstacle's X coordinate
   3) Next obstacle's Y coordinate
 
-Output: Jump / Do nothing
+Output: Jump
 
 Network Depth: 2 ( [3, 12, 1] )
   This is obviously an overkill, since the task at hand is so simple that hidden layers are not even neccessarily needed.
   Yet I decided to keep this structure because this is a demo and it looks cooler and gives more "personality" to the agents.
   
+  
+  
 Question: Why does the first generation often produce agents that can go indefinitely? Are they pre-trained? What's going on?
+
 Answer:   Since the task is relatively simple, it is pretty likely, that out of the 200 randomly initialized networks will emerge a lucky few, that
           have it figured out out-of-the-box.
-          
+      
+      
+      
 There are plenty of room for improvement, but I do not intend on continuing on this project, as I consider it my Hello World in ML.
 Next up: NEAT 
 
