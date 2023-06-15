@@ -33,7 +33,7 @@ Network Depth: 2 ( [3, 12, 1] )
       
       
       
-There are plenty of room for improvement, but I do not intend on continuing on this project, as I consider it my Hello World in ML.
+There is plenty of room for improvement, but I do not intend on continuing on this project, as I consider it my Hello World in ML.
 Next up: NEAT 
 
 
