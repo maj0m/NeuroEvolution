@@ -10,3 +10,5 @@ The children's genes have a low chance of mutating, enabling the population to a
 
 No Neural Network / AI libraries were used for this project. I made the NN on my own, so flaws are to be expected.
 I used the p5.js library for visualization.
+
+Demo: https://maj0m.github.io/Neuroevolution/
