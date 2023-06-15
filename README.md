@@ -28,7 +28,7 @@ Network Depth: 2 ( [3, 12, 1] )
   
 #Question: Why does the first generation often produce agents that can go indefinitely? Are they pre-trained? What's going on?
 
-#Answer:   Since the task is relatively simple, it is pretty likely, that out of the 200 randomly initialized networks will emerge a lucky few, that
+#Answer:   Since the task is relatively simple, it is pretty likely that of the 200 randomly initialized networks will emerge a lucky few, that
           have it figured out out-of-the-box.
       
       
